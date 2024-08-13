@@ -4,14 +4,15 @@ import 'package:app_with_team/Auth/res/size.dart';
 import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:flutter/material.dart';
 
+
 class MainButton extends StatelessWidget {
   final String textTheButton;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const MainButton({
     super.key,
     required this.textTheButton,
-    required this.onTap,
+    this.onTap,
   });
 
   @override
@@ -20,16 +21,21 @@ class MainButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          width: mainButtonSize.width,
-          height: mainButtonSize.height,
-          decoration: const BoxDecoration(
-            color: primaryColor,
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+          width: double.infinity,
+          height: 54,
+          decoration: BoxDecoration(
+            color: onTap != null
+                ? const Color.fromRGBO(0, 137, 85, 1)
+                : Colors.grey,
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
           child: Center(
             child: Text(
               textTheButton,
-              style: const TextStyle(color: buttonTextColor),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
             ),
           ),
         ),
@@ -41,32 +47,46 @@ class MainButton extends StatelessWidget {
 class MainButton2 extends StatelessWidget {
   final String textTheButton;
   final VoidCallback onTap;
+  final bool showIcon;
+  final IconData? icon;
 
   const MainButton2({
     super.key,
     required this.textTheButton,
     required this.onTap,
+    this.showIcon = false,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Center(
         child: InkWell(
           onTap: onTap,
           child: Container(
-            width: mainButtonSize.width,
-            height: mainButtonSize.height,
+            width: double.infinity,
+            height: 54,
             decoration: BoxDecoration(
-                color: buttonBackgroundColor,
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
-                border: Border.all(color: primaryColor)),
-            child: Center(
-              child: Text(
-                textTheButton,
-                style: const TextStyle(color: primaryColor),
-              ),
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              border: Border.all(color: Color.fromRGBO(0, 137, 85, 1)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (showIcon && icon != null)
+                  Icon(icon, color: Color.fromRGBO(0, 137, 85, 1)),
+                if (showIcon && icon != null) SizedBox(width: 8),
+                Text(
+                  textTheButton,
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 137, 85, 1),
+                    fontSize: 16,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -160,6 +180,54 @@ class CircularProgressButton extends StatelessWidget {
                 ),
         ),
       ],
+    );
+  }
+}
+
+class SocialLoginButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onTap;
+  final String image;
+
+  const SocialLoginButton({
+    super.key,
+    required this.text,
+    required this.onTap,
+    required this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Center(
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            width: double.infinity,
+            height: 54,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+              border: Border.all(color: const Color.fromRGBO(0, 137, 85, 1)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(image, height: 24),
+                const SizedBox(width: 8),
+                Text(
+                  text,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(0, 137, 85, 1),
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
