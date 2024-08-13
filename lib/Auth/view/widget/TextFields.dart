@@ -100,3 +100,36 @@ class TextFieldModel extends StatelessWidget {
     );
   }
 }
+
+class CustomTextField extends StatelessWidget {
+  final String labelText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+
+  const CustomTextField({
+    super.key,
+    required this.labelText,
+    this.prefixIcon,
+    this.suffixIcon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: labelText,
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+        ),
+      ),
+    );
+  }
+}

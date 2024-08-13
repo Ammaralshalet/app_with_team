@@ -1,4 +1,5 @@
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
+import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -42,12 +43,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelText: 'Your mobile number',
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.grey, // لون الإطار المعدل
+                        color: Colors.grey,
                       ),
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                     ),
                   ),
-                  initialCountryCode: 'BD', // الكود الافتراضي لبنغلاديش
+                  initialCountryCode: 'BD',
                   onChanged: (phone) {
                     print(phone.completeNumber);
                   },
@@ -168,17 +169,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SocialLoginButton(
                 text: 'Sign up with Gmail',
                 onTap: () {},
-                image: 'assets/images/gmail.png', // المسار إلى صورة جيميل
+                image: 'assets/Gmail.png', 
               ),
               SocialLoginButton(
                 text: 'Sign up with Facebook',
                 onTap: () {},
-                image: 'assets/images/facebook.png', // المسار إلى صورة فيسبوك
+                image: 'assets/Facebook.png', 
               ),
               SocialLoginButton(
                 text: 'Sign up with Apple',
                 onTap: () {},
-                image: 'assets/images/apple.png', // المسار إلى صورة أبل
+                image: 'assets/Apple.png', 
               ),
               const SizedBox(height: 20),
               Center(
@@ -194,39 +195,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  final String labelText;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
-
-  const CustomTextField({
-    super.key,
-    required this.labelText,
-    this.prefixIcon,
-    this.suffixIcon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: labelText,
-          border: const OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.grey, // لون الإطار المعدل
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-          ),
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
         ),
       ),
     );
