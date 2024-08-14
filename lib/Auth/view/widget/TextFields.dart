@@ -133,3 +133,70 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
+
+class CustomPasswordField extends StatelessWidget {
+  final String labelText;
+  final TextEditingController controller;
+  final bool obscureText;
+  final ValueChanged<String> onChanged;
+  final VoidCallback toggleObscureText;
+
+  const CustomPasswordField({
+    super.key,
+    required this.labelText,
+    required this.controller,
+    required this.obscureText,
+    required this.onChanged,
+    required this.toggleObscureText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextField(
+        controller: controller,
+        obscureText: obscureText,
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          labelText: labelText,
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              obscureText ? Icons.visibility_off : Icons.visibility,
+            ),
+            onPressed: toggleObscureText,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class CustomTextField2 extends StatelessWidget {
+  final String labelText;
+  final TextEditingController controller;
+
+  const CustomTextField2({
+    super.key,
+    required this.labelText,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: labelText,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: Color.fromRGBO(208, 208, 208, 1)),
+        ),
+      ),
+    );
+  }
+}

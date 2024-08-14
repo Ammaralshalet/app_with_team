@@ -1,3 +1,4 @@
+import 'package:app_with_team/Auth/view/pages/set_password.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
@@ -134,9 +135,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 textTheButton: 'Sign Up',
                 onTap: _termsAccepted
                     ? () {
-                        // تنفيذ عملية التسجيل
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUpPasswordScreen(),
+                          ),
+                        );
                       }
-                    : null, // الزر غير مفعل إذا لم يتم قبول الشروط
+                    : null,
               ),
               const SizedBox(height: 10),
               Row(
@@ -169,17 +175,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SocialLoginButton(
                 text: 'Sign up with Gmail',
                 onTap: () {},
-                image: 'assets/Gmail.png', 
+                image: 'assets/Gmail.png',
               ),
               SocialLoginButton(
                 text: 'Sign up with Facebook',
                 onTap: () {},
-                image: 'assets/Facebook.png', 
+                image: 'assets/Facebook.png',
               ),
               SocialLoginButton(
                 text: 'Sign up with Apple',
                 onTap: () {},
-                image: 'assets/Apple.png', 
+                image: 'assets/Apple.png',
               ),
               const SizedBox(height: 20),
               Center(
