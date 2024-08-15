@@ -1,3 +1,4 @@
+import 'package:app_with_team/Auth/view/pages/sign_in.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
@@ -145,7 +146,12 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   child: MainButton(
                     textTheButton: 'Save',
                     onTap: () {
-                      // Save action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => sing_in(),
+                        ),
+                      );
                     },
                   ),
                 ),

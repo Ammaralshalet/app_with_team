@@ -7,17 +7,17 @@ class SignUpPasswordScreen extends StatefulWidget {
   const SignUpPasswordScreen({super.key});
 
   @override
-  _SignUpPasswordScreenState createState() => _SignUpPasswordScreenState();
+  SignUpPasswordScreenState createState() => SignUpPasswordScreenState();
 }
 
-class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
+class SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-  bool _obscurePassword = true;
-  bool _obscureConfirmPassword = true;
-  bool _isPasswordValid = false;
-  bool _doPasswordsMatch = false;
+  bool obscurePassword = true;
+  bool obscureConfirmPassword = true;
+  bool isPasswordValid = false;
+  bool doPasswordsMatch = false;
 
   String _passwordErrorMessage = '';
 
@@ -52,14 +52,14 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
               CustomPasswordField(
                 labelText: 'Enter Your Password',
                 controller: _passwordController,
-                obscureText: _obscurePassword,
+                obscureText: obscurePassword,
                 onChanged: (password) {
                   _validatePassword(password);
                   _checkPasswordsMatch(_confirmPasswordController.text);
                 },
                 toggleObscureText: () {
                   setState(() {
-                    _obscurePassword = !_obscurePassword;
+                    obscurePassword = !obscurePassword;
                   });
                 },
               ),
@@ -67,13 +67,13 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
               CustomPasswordField(
                 labelText: 'Confirm Password',
                 controller: _confirmPasswordController,
-                obscureText: _obscureConfirmPassword,
+                obscureText: obscureConfirmPassword,
                 onChanged: (confirmPassword) {
                   _checkPasswordsMatch(confirmPassword);
                 },
                 toggleObscureText: () {
                   setState(() {
-                    _obscureConfirmPassword = !_obscureConfirmPassword;
+                    obscureConfirmPassword = !obscureConfirmPassword;
                   });
                 },
               ),
@@ -87,7 +87,7 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
               // زر التسجيل
               MainButton(
                 textTheButton: 'Register',
-                onTap: (_isPasswordValid && _doPasswordsMatch)
+                onTap: (isPasswordValid && doPasswordsMatch)
                     ? () {
                         Navigator.push(
                           context,
@@ -109,8 +109,8 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
   // التحقق من صحة كلمة المرور
   void _validatePassword(String password) {
     setState(() {
-      _isPasswordValid = _isPasswordCompliant(password);
-      _passwordErrorMessage = _isPasswordValid
+      isPasswordValid = _isPasswordCompliant(password);
+      _passwordErrorMessage = isPasswordValid
           ? ''
           : 'The password does not meet the conditions: it must contain an uppercase letter, a lowercase letter, and a special character.';
     });
@@ -119,11 +119,11 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
   // التحقق من تطابق كلمتي المرور
   void _checkPasswordsMatch(String confirmPassword) {
     setState(() {
-      _doPasswordsMatch = _passwordController.text == confirmPassword;
-      if (!_doPasswordsMatch && _isPasswordValid) {
+      doPasswordsMatch = _passwordController.text == confirmPassword;
+      if (!doPasswordsMatch && isPasswordValid) {
         _passwordErrorMessage =
             'The two passwords do not match. Please re-enter your password.';
-      } else if (_isPasswordValid && _doPasswordsMatch) {
+      } else if (isPasswordValid && doPasswordsMatch) {
         _passwordErrorMessage = ''; // تطابق وكل شيء صحيح
       }
     });
