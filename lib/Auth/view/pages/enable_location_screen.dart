@@ -65,14 +65,7 @@ class EnableLocationScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   MainButton(
                     textTheButton: useLocation,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const WelcomeScreen(),
-                        ),
-                      );
-                    },
+                    onTap: () {},
                   ),
                   const SizedBox(height: 8),
                   Center(
@@ -85,11 +78,18 @@ class EnableLocationScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const WelcomeScreen(),
+                          ),
+                        );
+                      },
                       child: const Text(
                         skipForNow,
                         style: TextStyle(
-                          color: Color(0xffE6F6F6),
+                          color: Colors.grey,
                           fontSize: 16,
                         ),
                       ),

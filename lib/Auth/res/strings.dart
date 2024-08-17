@@ -17,3 +17,11 @@ const String bookYourCarTitle = 'Book your car';
 const String descriptionText =
     'Sell houses easily with the help of Listenvory and to make this line big I am writing more.';
 const String goButtonText = 'Go';
+const String enableLocation = 'Enable your location';
+const String chooseLocation =
+    'Choose your location to start finding the requests around you';
+const String useLocation = 'Use my location';
+const String skipForNow = 'Skip for now';
+const String welcome = 'Welcome';
+const String textExperience = 'Have a better sharing experience';
+const String creatAccount = 'Create an account';

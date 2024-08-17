@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-class ResponsiveHelper {
+class Responsive {
   final BuildContext context;
 
-  ResponsiveHelper(this.context);
+  Responsive(this.context);
 
   double get screenWidth => MediaQuery.of(context).size.width;
 

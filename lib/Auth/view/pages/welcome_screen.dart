@@ -1,4 +1,6 @@
+import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
+import 'package:app_with_team/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 import 'sign_up_screen.dart';
 
@@ -7,51 +9,61 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final responsive = Responsive(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset('assets/welcome.png', height: 250),
+            Image.asset(
+              'assets/welcome.png',
+              height: responsive.getHeightPercentage(30),
+            ),
             const SizedBox(height: 20),
-            const Column(
-              children: [
-                Text(
-                  'Welcome',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
+            const Flexible(
+              child: Column(
+                children: [
+                  Text(
+                    welcome,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Have a better sharing experience',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
+                  SizedBox(height: 10),
+                  Text(
+                    textExperience,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 180,
-            ),
-            MainButton(
-              textTheButton: 'Create an account',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SignUpScreen(),
+            Flexible(
+              child: Column(
+                children: [
+                  MainButton(
+                    textTheButton: creatAccount,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-            MainButton2(
-              textTheButton: 'Log In',
-              onTap: () {},
+                  const SizedBox(height: 10),
+                  MainButton2(
+                    textTheButton: 'Log In',
+                    onTap: () {},
+                  ),
+                ],
+              ),
             ),
           ],
         ),
