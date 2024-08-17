@@ -1,4 +1,3 @@
-// lib/strings.dart
 const String bookLaterText = 'Book later';
 const String rideNowText = 'Ride Now';
 const String viewCarListText = 'View car list';

@@ -57,17 +57,19 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      _pageController.animateToPage(
-                        _slides.length - 1,
-                        duration: const Duration(
-                          milliseconds: 300,
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EnableLocationScreen(),
                         ),
-                        curve: Curves.easeInOut,
                       );
                     },
                     child: const Text(
                       skipText,
-                      style: TextStyle(fontSize: 18, color: skipTextColor),
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: skipTextColor,
+                      ),
                     ),
                   ),
                 ),

@@ -21,9 +21,14 @@ class OnboardingPage extends StatelessWidget {
       padding: pagePadding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Image.asset(imagePath, height: imageHeight),
-          const SizedBox(height: verticalSpacing),
+        children: [
+          Image.asset(
+            imagePath,
+            height: imageHeight,
+          ),
+          const SizedBox(
+            height: verticalSpacing,
+          ),
           Text(
             title,
             style: const TextStyle(
