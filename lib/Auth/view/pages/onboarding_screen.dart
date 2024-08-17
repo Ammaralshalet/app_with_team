@@ -52,7 +52,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
           Column(
             children: [
               Padding(
-                padding: iconPadding,
+                padding: iconPadding.copyWith(
+                  top: iconPadding.top + 15,
+                ),
                 child: Container(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(

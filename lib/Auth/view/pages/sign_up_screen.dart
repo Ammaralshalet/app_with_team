@@ -1,3 +1,4 @@
+import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:app_with_team/Auth/view/pages/set_password.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
@@ -22,8 +23,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          'Sign up with your email or phone number',
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          'Back',
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+          ),
         ),
         leading: const BackButton(
           color: Colors.black,
@@ -35,18 +40,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Text(
+                textSignUp,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                ),
+              ),
+              const SizedBox(height: 20),
               const CustomTextField(labelText: 'Name'),
               const CustomTextField(labelText: 'Email'),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: IntlPhoneField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Your mobile number',
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
                       ),
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
                   ),
                   initialCountryCode: 'BD',
@@ -58,9 +71,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Gender',
-                    border: const OutlineInputBorder(
+                    border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
                   ),

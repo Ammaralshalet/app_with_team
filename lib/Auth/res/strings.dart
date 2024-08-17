@@ -25,3 +25,4 @@ const String skipForNow = 'Skip for now';
 const String welcome = 'Welcome';
 const String textExperience = 'Have a better sharing experience';
 const String creatAccount = 'Create an account';
+const String textSignUp = 'Sign up with your email or phone number';
