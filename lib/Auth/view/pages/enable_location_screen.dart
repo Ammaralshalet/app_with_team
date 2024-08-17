@@ -1,3 +1,4 @@
+import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:app_with_team/Auth/view/pages/welcome_screen.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class EnableLocationScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   const Text(
-                    'Enable your location',
+                    enableLocation,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -54,7 +55,7 @@ class EnableLocationScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Choose your location to start finding the requests around you',
+                    chooseLocation,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.grey,
@@ -63,7 +64,7 @@ class EnableLocationScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   MainButton(
-                    textTheButton: 'Use my location',
+                    textTheButton: useLocation,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -86,9 +87,9 @@ class EnableLocationScreen extends StatelessWidget {
                       ),
                       onPressed: () {},
                       child: const Text(
-                        'Skip for now',
+                        skipForNow,
                         style: TextStyle(
-                          color: Colors.green,
+                          color: Color(0xffE6F6F6),
                           fontSize: 16,
                         ),
                       ),
