@@ -4,7 +4,6 @@ import 'package:app_with_team/Auth/res/size.dart';
 import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:flutter/material.dart';
 
-
 class MainButton extends StatelessWidget {
   final String textTheButton;
   final VoidCallback? onTap;
@@ -207,9 +206,9 @@ class SocialLoginButton extends StatelessWidget {
             width: double.infinity,
             height: 54,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.transparent,
               borderRadius: const BorderRadius.all(Radius.circular(8)),
-              border: Border.all(color: const Color.fromRGBO(0, 137, 85, 1)),
+              border: Border.all(),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -219,7 +218,7 @@ class SocialLoginButton extends StatelessWidget {
                 Text(
                   text,
                   style: const TextStyle(
-                    color: Color.fromRGBO(0, 137, 85, 1),
+                    color: Colors.black,
                     fontSize: 16,
                   ),
                 ),
