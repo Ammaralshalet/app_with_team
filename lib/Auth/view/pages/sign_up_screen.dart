@@ -251,9 +251,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
-                        'Already have an account? ',
+                        readyText,
                         style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       MouseRegion(
                         cursor: SystemMouseCursors.click,
@@ -269,8 +271,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: const Text(
                             'Sign in',
                             style: TextStyle(
-                                color: Color.fromRGBO(0, 137, 85, 1),
-                                fontWeight: FontWeight.bold),
+                              color: Color.fromRGBO(0, 137, 85, 1),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

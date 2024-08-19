@@ -39,3 +39,5 @@ const String passwordPermissions =
     'The password does not meet the conditions: it must contain an uppercase letter, a lowercase letter, and a special character.';
 const String passwordSimilarity =
     'The two passwords do not match. Please re-enter your password.';
+const String readyText = 'Already have an account? ';
+const String haveAccount = 'Don’t have an account? ';

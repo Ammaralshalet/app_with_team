@@ -1,4 +1,5 @@
 import 'package:app_with_team/Auth/res/strings.dart';
+import 'package:app_with_team/Auth/view/pages/sign_up_screen.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,7 @@ class _SignInState extends State<SignIn> {
           children: [
             Container(
                 alignment: Alignment.bottomLeft,
-                child: Text(
+                child: const Text(
                   textSignIn,
                   style: TextStyle(
                     fontSize: 24,
@@ -135,14 +136,37 @@ class _SignInState extends State<SignIn> {
             ),
             const SizedBox(height: 20),
             Center(
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Don’t have an account? Sign Up',
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 137, 85, 1),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    haveAccount,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Color.fromRGBO(0, 137, 85, 1),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
