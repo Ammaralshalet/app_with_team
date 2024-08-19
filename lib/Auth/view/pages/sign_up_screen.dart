@@ -28,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          ' Back',
+          textBack,
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,

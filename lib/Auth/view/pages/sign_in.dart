@@ -1,15 +1,16 @@
+import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
 
-class sing_in extends StatefulWidget {
-  const sing_in({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<sing_in> createState() => _sing_inState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _sing_inState extends State<sing_in> {
+class _SignInState extends State<SignIn> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -20,12 +21,15 @@ class _sing_inState extends State<sing_in> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          ' Back',
+          textBack,
           style: TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+          ),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_new,
             color: Colors.black,
           ),
@@ -41,8 +45,11 @@ class _sing_inState extends State<sing_in> {
             Container(
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  'Sign in with your email or \n phone number',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                  textSignIn,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500,
+                  ),
                 )),
             const SizedBox(height: 20),
             CustomTextField2(
