@@ -105,19 +105,24 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final TextEditingController controller;
+  final String? Function(String?) validator;
 
   const CustomTextField({
     super.key,
     required this.labelText,
     this.prefixIcon,
     this.suffixIcon,
+    required this.controller,
+    required this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
           border: const OutlineInputBorder(
@@ -129,6 +134,7 @@ class CustomTextField extends StatelessWidget {
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
         ),
+        validator: validator,
       ),
     );
   }
@@ -175,7 +181,6 @@ class CustomPasswordField extends StatelessWidget {
   }
 }
 
-
 class CustomTextField2 extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
@@ -194,7 +199,9 @@ class CustomTextField2 extends StatelessWidget {
         labelText: labelText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Color.fromRGBO(208, 208, 208, 1)),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(208, 208, 208, 1),
+          ),
         ),
       ),
     );

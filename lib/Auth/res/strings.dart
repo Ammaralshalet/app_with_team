@@ -1,4 +1,3 @@
-// lib/strings.dart
 const String bookLaterText = 'Book later';
 const String rideNowText = 'Ride Now';
 const String viewCarListText = 'View car list';
@@ -18,3 +17,17 @@ const String bookYourCarTitle = 'Book your car';
 const String descriptionText =
     'Sell houses easily with the help of Listenvory and to make this line big I am writing more.';
 const String goButtonText = 'Go';
+const String enableLocation = 'Enable your location';
+const String chooseLocation =
+    'Choose your location to start finding the requests around you';
+const String useLocation = 'Use my location';
+const String skipForNow = 'Skip for now';
+const String welcome = 'Welcome';
+const String textExperience = 'Have a better sharing experience';
+const String creatAccount = 'Create an account';
+const String textSignUp = 'Sign up with your email or phone number';
+const String yourPhone = 'Your mobile number';
+const String bySignUp = 'By signing up, you agree to the ';
+const String signGmail = 'Sign up with Gmail';
+const String signFacebook = 'Sign up with Facebook';
+const String signApple = 'Sign up with Apple';
