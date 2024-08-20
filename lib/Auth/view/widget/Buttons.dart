@@ -68,19 +68,26 @@ class MainButton2 extends StatelessWidget {
             width: double.infinity,
             height: 54,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              border: Border.all(color: Color.fromRGBO(0, 137, 85, 1)),
+              color: Colors.transparent,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(8),
+              ),
+              border: Border.all(
+                color: const Color.fromRGBO(0, 137, 85, 1),
+              ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (showIcon && icon != null)
-                  Icon(icon, color: Color.fromRGBO(0, 137, 85, 1)),
-                if (showIcon && icon != null) SizedBox(width: 8),
+                  Icon(
+                    icon,
+                    color: const Color.fromRGBO(0, 137, 85, 1),
+                  ),
+                if (showIcon && icon != null) const SizedBox(width: 8),
                 Text(
                   textTheButton,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Color.fromRGBO(0, 137, 85, 1),
                     fontSize: 16,
                   ),

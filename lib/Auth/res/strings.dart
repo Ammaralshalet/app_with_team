@@ -26,8 +26,18 @@ const String welcome = 'Welcome';
 const String textExperience = 'Have a better sharing experience';
 const String creatAccount = 'Create an account';
 const String textSignUp = 'Sign up with your email or phone number';
+const String textSignIn = 'Sign in with your email or \n phone number';
 const String yourPhone = 'Your mobile number';
 const String bySignUp = 'By signing up, you agree to the ';
 const String signGmail = 'Sign up with Gmail';
 const String signFacebook = 'Sign up with Facebook';
 const String signApple = 'Sign up with Apple';
+const String textFieldRequired = 'This field is required';
+const String enterPassword = 'Enter Your Password';
+const String textBack = ' Back';
+const String passwordPermissions =
+    'The password does not meet the conditions: it must contain an uppercase letter, a lowercase letter, and a special character.';
+const String passwordSimilarity =
+    'The two passwords do not match. Please re-enter your password.';
+const String readyText = 'Already have an account? ';
+const String haveAccount = 'Don’t have an account? ';

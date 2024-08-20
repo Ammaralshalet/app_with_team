@@ -1,4 +1,6 @@
+import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:app_with_team/Auth/view/pages/sign_in.dart';
+import 'package:app_with_team/Auth/view/pages/welcome_screen.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
@@ -16,21 +18,27 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _streetController = TextEditingController();
 
-  String _selectedCity = 'Select City';
-  String _selectedDistrict = 'Select District';
+  String selectedCity = 'Malki';
+  String selectedDistrict = 'Al-Mohafaza';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Profile',
-          style: TextStyle(color: Colors.black, fontSize: 16),
+          "Profile",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+          ),
         ),
+        centerTitle: true,
         leading: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new,
                 color: Colors.black,
               ),
@@ -38,20 +46,25 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                 Navigator.pop(context);
               },
             ),
-            const Text(
-              'Back',
-              style: TextStyle(color: Colors.black),
+            const Center(
+              child: Text(
+                textBack,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ],
         ),
-        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -88,11 +101,12 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
             const SizedBox(height: 20),
             IntlPhoneField(
               decoration: InputDecoration(
-                labelText: 'Your mobile number',
+                labelText: yourPhone,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide:
-                      BorderSide(color: Color.fromRGBO(208, 208, 208, 1)),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(208, 208, 208, 1),
+                  ),
                 ),
               ),
               initialCountryCode: 'BD',
@@ -110,23 +124,30 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
             const SizedBox(height: 20),
             _buildDropdown(
               labelText: 'City',
-              value: _selectedCity,
-              items: ['Select City', 'Dhaka', 'Chittagong', 'Sylhet'],
+              value: selectedCity,
+              items: [
+                'Malki',
+                'Mezzeh',
+                'Kafr Souseh',
+                'Baramkeh',
+                'Abu Rummaneh',
+                'Bab Touma',
+              ],
               onChanged: (value) {
                 setState(() {
-                  _selectedCity = value!;
-                  _selectedDistrict = 'Select District';
+                  selectedCity = value!;
+                  selectedDistrict = _getDistrictsForCity(value)[0];
                 });
               },
             ),
             const SizedBox(height: 20),
             _buildDropdown(
               labelText: 'District',
-              value: _selectedDistrict,
-              items: _getDistrictsForCity(_selectedCity),
+              value: selectedDistrict,
+              items: _getDistrictsForCity(selectedCity),
               onChanged: (value) {
                 setState(() {
-                  _selectedDistrict = value!;
+                  selectedDistrict = value!;
                 });
               },
             ),
@@ -137,7 +158,12 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   child: MainButton2(
                     textTheButton: 'Cancel',
                     onTap: () {
-                      // Cancel action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const WelcomeScreen(),
+                        ),
+                      );
                     },
                   ),
                 ),
@@ -149,7 +175,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => sing_in(),
+                          builder: (context) => const SignIn(),
                         ),
                       );
                     },
@@ -174,7 +200,9 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
         labelText: labelText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Color.fromRGBO(208, 208, 208, 1)),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(208, 208, 208, 1),
+          ),
         ),
       ),
       child: DropdownButtonHideUnderline(
@@ -197,12 +225,18 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
 
   List<String> _getDistrictsForCity(String city) {
     switch (city) {
-      case 'Dhaka':
-        return ['Select District', 'Gulshan', 'Banani', 'Dhanmondi'];
-      case 'Chittagong':
-        return ['Select District', 'Pahartali', 'Rangunia', 'Raozan'];
-      case 'Sylhet':
-        return ['Select District', 'Beanibazar', 'Golapganj', 'Zakirnagar'];
+      case 'Bab Touma':
+        return ['Qishleh', 'Straight Street', 'Al-Hamidiyah'];
+      case 'Abu Rummaneh':
+        return ['Al-Muhajireen', 'Rawda', 'Sharia Al-Jalaa'];
+      case 'Baramkeh':
+        return ['Al-Adawi', 'Al-Mazraa', 'Al-Qanawat'];
+      case 'Kafr Souseh':
+        return ['Al-Afif', 'Al-Midan', 'Al-Jisr Al-Abyad'];
+      case 'Mezzeh':
+        return ['Mezzeh 86', 'Mezzeh Autostrade', 'Mezzeh Jabal'];
+      case 'Malki':
+        return ['Al-Mohafaza', 'Al-Faiha', 'Al-Muhajireen'];
       default:
         return ['Select District'];
     }
