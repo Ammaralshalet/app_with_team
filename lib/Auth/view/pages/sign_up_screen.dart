@@ -1,10 +1,10 @@
-import 'package:app_with_team/Auth/res/strings.dart';
 import 'package:app_with_team/Auth/view/pages/set_password.dart';
 import 'package:app_with_team/Auth/view/pages/welcome_screen.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:app_with_team/Auth/res/strings.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
