@@ -1,32 +1,32 @@
 import 'dart:convert';
 
 class UserModel {
-  String? firstName;
-  String? lastName;
-  String? phone;
-  String? username;
-  String? birthDate;
-  String? password;
-  String? confirmPassword;
+  String firstName;
+  String lastName;
+  String phone;
+  String username;
+  String birthDate;
+  String password;
+  String confirmPassword;
 
   UserModel({
-    this.firstName,
-    this.lastName,
-    this.phone,
-    this.username,
-    this.birthDate,
-    this.password,
-    this.confirmPassword,
+    required this.firstName,
+    required this.lastName,
+    required this.phone,
+    required this.username,
+    required this.birthDate,
+    required this.password,
+    required this.confirmPassword,
   });
 
   bool isValid() {
-    return firstName != null &&
-        lastName != null &&
-        phone != null &&
-        username != null &&
-        birthDate != null &&
-        password != null &&
-        confirmPassword != null &&
+    return firstName.isNotEmpty &&
+        lastName.isNotEmpty &&
+        phone.isNotEmpty &&
+        username.isNotEmpty &&
+        birthDate.isNotEmpty &&
+        password.isNotEmpty &&
+        confirmPassword.isNotEmpty &&
         password == confirmPassword;
   }
 
@@ -64,15 +64,13 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      firstName: map['firstName'] != null ? map['firstName'] as String : null,
-      lastName: map['lastName'] != null ? map['lastName'] as String : null,
-      phone: map['phone'] != null ? map['phone'] as String : null,
-      username: map['username'] != null ? map['username'] as String : null,
-      birthDate: map['birthDate'] != null ? map['birthDate'] as String : null,
-      password: map['password'] != null ? map['password'] as String : null,
-      confirmPassword: map['confirmPassword'] != null
-          ? map['confirmPassword'] as String
-          : null,
+      firstName: map['firstName'] as String,
+      lastName: map['lastName'] as String,
+      phone: map['phone'] as String,
+      username: map['username'] as String,
+      birthDate: map['birthDate'] as String,
+      password: map['password'] as String,
+      confirmPassword: map['confirmPassword'] as String,
     );
   }
 
