@@ -4,6 +4,7 @@ import 'package:app_with_team/Auth/view/pages/welcome_screen.dart';
 import 'package:app_with_team/Auth/view/widget/Buttons.dart';
 import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _termsAccepted = false;
-  String? _selectedGender;
+  String? _selectedDate;
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
@@ -62,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 20),
                 CustomTextField(
-                  labelText: 'Name',
+                  labelText: 'First Name',
                   controller: _nameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -72,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
                 CustomTextField(
-                  labelText: 'Email',
+                  labelText: 'Last Name',
                   controller: _emailController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -106,39 +107,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: DropdownButtonFormField<String>(
+                  child: TextFormField(
                     decoration: const InputDecoration(
-                      labelText: 'Gender',
+                      labelText: 'Date of Birth',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                     ),
-                    value: _selectedGender,
-                    items: const [
-                      DropdownMenuItem(
-                        value: 'Male',
-                        child: Text('Male'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'Female',
-                        child: Text('Female'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'Other',
-                        child: Text('Other'),
-                      ),
-                    ],
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedGender = value;
-                      });
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime.now(),
+                      );
+                      if (pickedDate != null) {
+                        setState(() {
+                          _selectedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                        });
+                      }
                     },
                     validator: (value) {
-                      if (value == null) {
+                      if (_selectedDate == null || _selectedDate!.isEmpty) {
                         return 'This field is required';
                       }
                       return null;
                     },
+                    controller: TextEditingController(text: _selectedDate),
                   ),
                 ),
                 const SizedBox(height: 20),
