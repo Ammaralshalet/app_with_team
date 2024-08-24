@@ -183,10 +183,10 @@ class MyCustomWidget extends StatefulWidget {
   const MyCustomWidget({super.key});
 
   @override
-  _MyCustomWidgetState createState() => _MyCustomWidgetState();
+  MyCustomWidgetState createState() => MyCustomWidgetState();
 }
 
-class _MyCustomWidgetState extends State<MyCustomWidget> {
+class MyCustomWidgetState extends State<MyCustomWidget> {
   bool isTransportSelected = true;
 
   @override
