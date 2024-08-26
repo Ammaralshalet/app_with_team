@@ -1,3 +1,4 @@
+import 'package:app_with_team/Auth/view/pages/home_screen_Transport.dart';
 import 'package:app_with_team/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:app_with_team/Auth/res/strings.dart';
@@ -96,7 +97,14 @@ class _SignInState extends State<SignIn> {
               ),
               MainButton(
                 textTheButton: 'Sign Up',
-                onTap: () {},
+                onTap: () {
+                   Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreenTransport(),
+                              ),
+                            );
+                },
               ),
               SizedBox(height: responsive.getHeightPercentage(2)),
               const Row(

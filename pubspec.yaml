@@ -45,6 +45,7 @@ dependencies:
   flutter_map: ^7.0.2
   latlong2: ^0.9.1
   location: ^6.0.2
+  bloc: ^8.1.4
 
 dev_dependencies:
   flutter_test:
