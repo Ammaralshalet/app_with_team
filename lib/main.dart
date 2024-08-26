@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: const Scaffold(
-          body: OnboardingScreen(),  // تأكد من أن BlocBuilder موجود في HomeScreenTransport
+          body: OnboardingScreen(),  
         ),
       ),
     );
