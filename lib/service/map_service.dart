@@ -44,7 +44,7 @@ class MapService {
         'q': query,
         'format': 'json',
         'limit': 10,
-        'countrycodes': 'SY', // البحث ضمن سوريا فقط
+        'countrycodes': 'SY', 
       },
     );
 
