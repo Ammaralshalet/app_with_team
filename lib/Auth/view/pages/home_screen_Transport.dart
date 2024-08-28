@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 
-
 class HomeScreenTransport extends StatefulWidget {
   const HomeScreenTransport({super.key});
 
@@ -19,11 +18,18 @@ class HomeScreenTransport extends StatefulWidget {
 
 class _HomeScreenTransportState extends State<HomeScreenTransport> {
   final TextEditingController searchController = TextEditingController();
+  int _selectedIndex = 0;
 
   @override
   void dispose() {
     searchController.dispose();
     super.dispose();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -38,9 +44,9 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
             icon: Container(
               width: 34,
               height: 34,
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(138, 212, 181, 1),
-                  borderRadius: const BorderRadius.all(Radius.circular(8))),
+              decoration: const BoxDecoration(
+                  color: Color.fromRGBO(138, 212, 181, 1),
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
               child: const Icon(
                 Icons.menu,
               ),
@@ -82,40 +88,10 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
                   markers: state.markers,
                 ),
                 Positioned(
-                  top: 100.0,
-                  left: 16.0,
-                  right: 16.0,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: searchController,
-                          decoration: InputDecoration(
-                            hintText: "Search for a location",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed: () {
-                          context.read<MapBloc>().add(SearchLocationEvent(searchController.text));
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 160.0,
+                  bottom: 170.0,
                   right: 25.0,
                   child: FloatingActionButton(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.white,
                     onPressed: () {
                       context.read<MapBloc>().add(GetLocationEvent());
                     },
@@ -123,7 +99,7 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
                   ),
                 ),
                 Positioned(
-                  bottom: 160.0,
+                  bottom: 170.0,
                   left: 25.0,
                   right: 300.0,
                   child: MainButton(
@@ -131,7 +107,7 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
                     onTap: () {},
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   bottom: 16.0,
                   left: 16.0,
                   right: 16.0,
@@ -144,6 +120,37 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
           }
           return const Center(child: Text('Unknown state'));
         },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favourite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance_wallet_outlined),
+            label: 'Wallet',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_offer_outlined),
+            label: 'Offer',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color.fromRGBO(0, 137, 85, 1),
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        showUnselectedLabels: true,
       ),
     );
   }

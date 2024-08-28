@@ -196,8 +196,12 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
       child: Container(
         padding: containerPadding,
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: const Color(0xffB9E5D1),
           borderRadius: BorderRadius.circular(12.0),
+          border: Border.all(
+            color: Colors.green,
+            width: 2.0,
+          ),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -205,12 +209,12 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
             Container(
               padding: searchFieldPadding,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: const Color(0xffE2F5ED),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: const Row(
                 children: [
-                  Icon(Icons.search, color: greyTextColor),
+                  Icon(Icons.search, color: Colors.black),
                   SizedBox(width: 8.0),
                   Expanded(
                     child: TextField(
@@ -221,7 +225,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                       ),
                     ),
                   ),
-                  Icon(Icons.favorite_border, color: greyTextColor),
+                  Icon(Icons.favorite_border, color: borderColor),
                 ],
               ),
             ),
@@ -241,6 +245,7 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                             isTransportSelected ? primaryColor : Colors.white,
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(12.0),
+                          topLeft: Radius.circular(12.0),
                         ),
                       ),
                       padding: buttonPadding,
@@ -266,10 +271,12 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color:
-                            !isTransportSelected ? primaryColor : Colors.white,
+                        color: !isTransportSelected
+                            ? primaryColor
+                            : const Color(0xffE2F5ED),
                         borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(12.0),
+                          topRight: Radius.circular(12.0),
                         ),
                       ),
                       padding: buttonPadding,

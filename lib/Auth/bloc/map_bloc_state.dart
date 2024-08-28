@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:location/location.dart';
 
-// حالات (States) التي يمكن أن يكون Bloc عليها
 abstract class MapState extends Equatable {
   @override
   List<Object?> get props => [];

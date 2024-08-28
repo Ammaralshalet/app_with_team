@@ -50,10 +50,8 @@ class MapBloc extends Bloc<auth_event.MapEvent, MapState> {
     emit(MapLoading());
 
     try {
-      // مسح أو إعادة تعيين قائمة الـ Markers قبل البحث الجديد
       List<Marker> markers = [];
 
-      // البحث عن المواقع الجديدة وإضافتها إلى القائمة
       markers = await mapService.searchLocation(event.query);
 
       emit(MapLoaded(
