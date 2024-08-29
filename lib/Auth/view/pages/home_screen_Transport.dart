@@ -8,6 +8,7 @@ import 'package:app_with_team/Auth/view/widget/map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class HomeScreenTransport extends StatefulWidget {
   const HomeScreenTransport({super.key});
@@ -80,12 +81,47 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
           } else if (state is MapLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is MapLoaded) {
+            final List<Marker> parkingMarkers = [
+              const Marker(
+                point: LatLng(33.5128, 36.2765),
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.red,
+                  size: 40,
+                ),
+              ),
+              const Marker(
+                point: LatLng(33.5102, 36.2919),
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.red,
+                  size: 40,
+                ),
+              ),
+              const Marker(
+                point: LatLng(33.5226, 36.2941),
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.red,
+                  size: 40,
+                ),
+              ),
+              const Marker(
+                point: LatLng(33.4962, 36.2415),
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.red,
+                  size: 40,
+                ),
+              ),
+            ];
+
             return Stack(
               children: [
                 MapWidget(
                   mapController: MapController(),
                   currentLocation: state.locationData,
-                  markers: state.markers,
+                  markers: [...state.markers, ...parkingMarkers],
                 ),
                 Positioned(
                   bottom: 170.0,
@@ -122,25 +158,39 @@ class _HomeScreenTransportState extends State<HomeScreenTransport> {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              _selectedIndex == 0 ? Icons.home : Icons.home_outlined,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(
+              _selectedIndex == 1 ? Icons.favorite : Icons.favorite_border,
+            ),
             label: 'Favourite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet_outlined),
+            icon: Icon(
+              _selectedIndex == 2
+                  ? Icons.account_balance_wallet
+                  : Icons.account_balance_wallet_outlined,
+            ),
             label: 'Wallet',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_offer_outlined),
+            icon: Icon(
+              _selectedIndex == 3
+                  ? Icons.local_offer
+                  : Icons.local_offer_outlined,
+            ),
             label: 'Offer',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(
+              _selectedIndex == 4 ? Icons.person : Icons.person_outline,
+            ),
             label: 'Profile',
           ),
         ],

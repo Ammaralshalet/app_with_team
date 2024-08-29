@@ -241,8 +241,9 @@ class MyCustomWidgetState extends State<MyCustomWidget> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color:
-                            isTransportSelected ? primaryColor : Colors.white,
+                        color: isTransportSelected
+                            ? primaryColor
+                            : const Color(0xffE2F5ED),
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(12.0),
                           topLeft: Radius.circular(12.0),
