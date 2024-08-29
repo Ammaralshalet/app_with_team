@@ -1,8 +1,8 @@
-import 'package:app_with_team/Auth/res/strings.dart';
-import 'package:app_with_team/Auth/view/pages/profileScreen.dart';
-import 'package:app_with_team/Auth/view/widget/Buttons.dart';
-import 'package:app_with_team/Auth/view/widget/TextFields.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:app_with_team/Auth/bloc/auth_bloc.dart';
+import 'package:app_with_team/Auth/bloc/auth_event.dart';
 
 class SignUpPasswordScreen extends StatefulWidget {
   const SignUpPasswordScreen({super.key});
@@ -13,8 +13,7 @@ class SignUpPasswordScreen extends StatefulWidget {
 
 class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
   bool _isPasswordValid = false;
@@ -27,7 +26,7 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          textBack,
+          'Back',
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -51,7 +50,7 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomPasswordField(
-                labelText: enterPassword,
+                labelText: 'Enter Password',
                 controller: _passwordController,
                 obscureText: _obscurePassword,
                 onChanged: (password) {
@@ -80,51 +79,4 @@ class _SignUpPasswordScreenState extends State<SignUpPasswordScreen> {
               const SizedBox(height: 8),
               if (_passwordErrorMessage.isNotEmpty)
                 Text(
-                  _passwordErrorMessage,
-                  style: const TextStyle(color: Colors.red, fontSize: 12),
-                ),
-              const SizedBox(height: 20),
-              MainButton(
-                textTheButton: 'Register',
-                onTap: (_isPasswordValid && _doPasswordsMatch)
-                    ? () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CompleteProfileScreen(),
-                          ),
-                        );
-                      }
-                    : null,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _validatePassword(String password) {
-    setState(() {
-      _isPasswordValid = _isPasswordCompliant(password);
-      _passwordErrorMessage = _isPasswordValid ? '' : passwordPermissions;
-    });
-  }
-
-  void _checkPasswordsMatch(String confirmPassword) {
-    setState(() {
-      _doPasswordsMatch = _passwordController.text == confirmPassword;
-      if (!_doPasswordsMatch && _isPasswordValid) {
-        _passwordErrorMessage = passwordSimilarity;
-      } else if (_isPasswordValid && _doPasswordsMatch) {
-        _passwordErrorMessage = '';
-      }
-    });
-  }
-
-  bool _isPasswordCompliant(String password) {
-    final regex = RegExp(
-        r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
-    return regex.hasMatch(password);
-  }
-}
+                  _passwordError
