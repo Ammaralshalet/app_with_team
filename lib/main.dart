@@ -1,5 +1,5 @@
 import 'package:app_with_team/Auth/bloc/map_bloc_bloc.dart';
-import 'package:app_with_team/Auth/view/pages/onboarding_screen.dart';
+
 import 'package:app_with_team/service/map_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,11 +23,13 @@ class MyApp extends StatelessWidget {
           create: (context) => MapBloc(mapService: mapService),
         ),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home:  Scaffold(
           body:
              NotificationScreen(), 
+        home: Scaffold(
+          body: OnboardingScreen(),
         ),
       ),
     );
