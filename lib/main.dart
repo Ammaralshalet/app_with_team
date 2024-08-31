@@ -21,11 +21,10 @@ class MyApp extends StatelessWidget {
           create: (context) => MapBloc(mapService: mapService),
         ),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const Scaffold(
-          body:
-              OnboardingScreen(), // تأكد من أن BlocBuilder موجود في HomeScreenTransport
+        home: Scaffold(
+          body: OnboardingScreen(),
         ),
       ),
     );
