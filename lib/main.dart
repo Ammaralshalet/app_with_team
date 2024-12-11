@@ -1,7 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:app_with_team/Auth/bloc/map_bloc_bloc.dart';
 
-void mian() {
-  runApp(MyApp());
+import 'package:app_with_team/service/map_service.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'Auth/view/pages/notification_screen.dart';
+
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,9 +15,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ,
+    final mapService = MapService();
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MapBloc>(
+          create: (context) => MapBloc(mapService: mapService),
+        ),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home:  Scaffold(
+          body:
+             NotificationScreen(), 
+        home: Scaffold(
+          body: OnboardingScreen(),
+        ),
+      ),
     );
   }
 }
